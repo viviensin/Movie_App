@@ -1,0 +1,36 @@
+
+<!-- add container class -->
+<!-- div represents a new row -->
+
+	<h1>Welcome to RetFlix! See our collection of movies below.</h1> 
+
+<a href="<%= new_movie_path %>">+ Add a movie</a>
+<br>
+<br>
+
+<%= form_tag "/", :method => :get do%>
+	<%= text_field_tag :q, params[:q] %>
+	<%= submit_tag "Find me movies" %>
+<% end %>
+
+<ul>
+	<% @movies.each do |movie| %>
+	<li>	
+			<h2><a href="<%= movie_path(movie) %>"><%= movie.title %></a></h2>
+			<a href="<%= edit_movie_path(movie) %>">Edit</a>
+			<p>
+			<%= movie.description %>
+			</p>
+			<p>
+			<%= movie.year_released %>
+			</p>
+
+	</li>
+	
+
+			
+	<% end %>
+</ul>
+
+
+
